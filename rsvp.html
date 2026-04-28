@@ -3,15 +3,248 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RSVP | Wedding</title>
-  <meta http-equiv="refresh" content="0; url=https://docs.google.com/forms/d/e/1FAIpQLSewVQ8f65OhPqsNvBOQOCJaeplDB0L7UmEebc_MbexpDPMOug/viewform">
+  <title>RSVP | Anja & Marko</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fbf8f3;
+      color: #2f2a26;
+      min-height: 100vh;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background:
+        linear-gradient(rgba(251,248,243,0.88), rgba(251,248,243,0.95)),
+        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 720px;
+      background: white;
+      border-radius: 30px;
+      padding: 46px;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.13);
+      border: 1px solid rgba(193, 154, 107, 0.35);
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: #b08a5b;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .small {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #b08a5b;
+      font-size: 13px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 46px;
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      text-align: center;
+      color: #6d625a;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 15px;
+      margin-bottom: 22px;
+      border: 1px solid #ded1c3;
+      border-radius: 14px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      background: #fffdfb;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .radio-option {
+      flex: 1;
+      min-width: 180px;
+      border: 1px solid #ded1c3;
+      padding: 14px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      background: #fffdfb;
+    }
+
+    .radio-option input {
+      width: auto;
+      margin: 0;
+    }
+
+    .btn {
+      width: 100%;
+      border: none;
+      background: #b08a5b;
+      color: white;
+      padding: 16px;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      background: #967246;
+    }
+
+    .success {
+      display: none;
+      margin-top: 22px;
+      padding: 18px;
+      background: #eef7ee;
+      color: #2f6b36;
+      border-radius: 16px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    @media (max-width: 600px) {
+      .box {
+        padding: 32px 22px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .radio-group {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <p>Preusmeravamo vas na RSVP formu...</p>
-  <p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSewVQ8f65OhPqsNvBOQOCJaeplDB0L7UmEebc_MbexpDPMOug/viewform">
-      Kliknite ovde ako se forma ne otvori automatski.
-    </a>
-  </p>
+
+  <main class="page">
+    <div class="box">
+      <a href="index.html" class="back">← Nazad na početnu</a>
+
+      <div class="small">RSVP</div>
+      <h1>Potvrdite dolazak</h1>
+
+      <p class="intro">
+        Molimo vas da nam javite da li dolazite najkasnije do 1. juna 2026.
+      </p>
+
+      <form id="rsvpForm">
+        <label for="name">Ime i prezime *</label>
+        <input type="text" id="name" name="name" required>
+
+        <label>Da li dolazite? *</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="Dolazim" required>
+            Dolazim
+          </label>
+
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="Ne dolazim" required>
+            Ne dolazim
+          </label>
+        </div>
+
+        <label for="guests">Broj osoba</label>
+        <select id="guests" name="guests">
+          <option value="1">1 osoba</option>
+          <option value="2">2 osobe</option>
+          <option value="3">3 osobe</option>
+          <option value="4">4 osobe</option>
+        </select>
+
+        <label for="guestNames">Imena dodatnih gostiju</label>
+        <textarea id="guestNames" name="guestNames"></textarea>
+
+        <label for="food">Posebne napomene / alergije</label>
+        <textarea id="food" name="food"></textarea>
+
+        <button type="submit" class="btn">Pošalji odgovor</button>
+
+        <div class="success" id="successMessage">
+          Hvala! Vaš odgovor je uspešno zabeležen.
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("rsvpForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const formData = {
+        name: document.getElementById("name").value,
+        attendance: document.querySelector('input[name="attendance"]:checked')?.value,
+        guests: document.getElementById("guests").value,
+        guestNames: document.getElementById("guestNames").value,
+        food: document.getElementById("food").value,
+        submittedAt: new Date().toISOString()
+      };
+
+      console.log(formData);
+      localStorage.setItem("weddingRSVP", JSON.stringify(formData));
+
+      successMessage.style.display = "block";
+      form.reset();
+    });
+  </script>
+
 </body>
 </html>
